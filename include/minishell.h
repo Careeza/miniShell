@@ -4,7 +4,9 @@
 
 typedef struct s_info
 {
-    
+    int argc;
+    char **argv;
+    char **env;
 } t_info;
 
 #endif
