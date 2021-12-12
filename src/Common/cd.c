@@ -307,7 +307,7 @@ int	main(int argc, char *argv[])
 		printf("%s\n", dirp->d_name);
 		dirp = readdir(dp);
 	}
-	////////////////
+	///////////////
 	closedir(dp);
 	if (final_path != NULL)
 	{
