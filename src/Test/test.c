@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 void    test_cd(t_info* info)
 {
@@ -49,14 +51,24 @@ void    test_unset(t_info* info)
 int     main(int argc, char **argv, char **env) 
 {
     t_info  info;
-    int		status;
 
     info.argc = argc;
     info.argv = argv;
     info.env = env;
-    test_echo(&info);
-    test_pwd(&info);
-    wait(&status);
-    printf("\n");
+    //ft_pwd(&info);
+    //printf("\n");
+    while (1)
+    {
+        info.line_read = readline("minishell> ");
+        if (ft_strncmp(info.line_read, "exit", 4) == 0)
+        {
+            info.exit_value = 0;
+            ft_exit(&info);
+        }
+        if (ft_strncmp(info.line_read, "pwd", 3) == 0)
+            ft_pwd(&info);
+        if (ft_strncmp(info.line_read, "echo", 4) == 0)
+            ft_echo(&info);
+    }
     return (0);
 }

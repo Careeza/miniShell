@@ -1,3 +1,12 @@
+SRC += src/Utils/ft_putchar.c
+SRC += src/Utils/ft_putstr.c
+SRC += src/Utils/ft_strlen.c
+SRC += src/Utils/ft_strncmp.c
+SRC += src/Utils/ft_substr.c
+SRC += src/Utils/ft_split.c
+SRC += src/Utils/ft_strjoin.c
+SRC += src/Utils/join_tab.c
+SRC += src/Utils/remove_chars.c
 SRC += src/Common/cd.c
 SRC += src/Common/echo.c
 SRC += src/Common/env.c

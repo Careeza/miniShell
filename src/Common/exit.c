@@ -1,7 +1,7 @@
 #include "minishell.h"
 #include <stdlib.h>
 
-void    ft_exit(int exit_value)
+void    ft_exit(t_info *info)
 {
-    exit(exit_value);
+    exit(info->exit_value);
 }
