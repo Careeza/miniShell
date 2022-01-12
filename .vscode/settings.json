@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "string.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "functions.h": "c",
+        "common.h": "c",
+        "stdlib.h": "c",
+        "limits.h": "c",
+        "__locale": "c"
     }
 }

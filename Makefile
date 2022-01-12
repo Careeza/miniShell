@@ -20,10 +20,9 @@ endif
 include src.mk
 
 OBJS = $(patsubst src/%.c, $(OBJS_DIR)/%.o, $(SRC))
-OBJS_TEST = $(filter $(OBJS_DIR)/Test/%, $(OBJS))
-OBJS_UTILS = $(filter $(OBJS_DIR)/Utils/%, $(OBJS))
+OBJS_FUNCTIONS = $(filter $(OBJS_DIR)/Functions/%, $(OBJS))
 OBJS_COMMON = $(filter $(OBJS_DIR)/Common/%, $(OBJS))
-
+OBJS_MINISHELL = $(filter $(OBJS_DIR)/MiniShell/%, $(OBJS))
 
 all: minishell
 
@@ -32,7 +31,7 @@ $(OBJS_DIR)/%.o: src/%.c Makefile
 	$(CC) $(CFLAGS) -c -o $@ $<
 	@$(POSTCOMPILE)
 
-minishell: $(OBJS_TEST) $(OBJS_UTILS) $(OBJS_COMMON)
+minishell: $(OBJS_FUNCTIONS) $(OBJS_COMMON) $(OBJS_MINISHELL)
 
 minishell:
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
