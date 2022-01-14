@@ -3,24 +3,55 @@
 #include "common.h"
 #include <unistd.h>
 
-char    *ft_parse_path(t_info *info, char *str)
+void    ft_cut_path(char *path)
+{
+    int i;
+
+    i = ft_strlen(path) - 1;
+    while (i >= 0 && path[i] != '/')
+        i--;
+    if (i < 0)
+        return ;
+    if (i == 0)
+    {
+        if (path[0] == '/')
+            path[1] = '\0';
+    }
+    else
+        path[i] = '\0';
+}
+
+char    *ft_parse_path(char *str)
 {
     char    *path;
     char    **paths;
+    char    *tmp;
     int     i;
 
+    path = NULL;
     paths = ft_split(str, '/');                     
     if (str[0] != '/')
         path = ft_getpwd();
     i = 0;
     while (paths[i])
     {
-        if (ft_strcmp(paths[i], ".."))
+        if (ft_strcmp(paths[i], "..") == 0)
+        {
+            ft_cut_path(path);
+        }
+        else if (ft_strcmp(paths[i], ".") == 0)
             ;
-        else if (ft_strcmp(paths[i], "."))
-            ;
+        else
+        {
+            tmp = path;
+            path = ft_strjoin3(path, "/", paths[i]);
+            if (tmp != NULL)
+                free(tmp);
+        }
+        i++;
     }
-    
+    ft_free_tabs(paths);
+    return (path);
 }
 
 char    *ft_parse_env_name(t_info *info, char *str, int *index)
@@ -160,27 +191,24 @@ void    ft_parser(t_info *info)
         info->exit_value = 0;
         ft_exit(info);
     }
-    
-    pid = fork();
-    if (pid == 0)
+    else if (ft_strcmp(info->cmd.cmd, "pwd") == 0)
+        ft_pwd(info);
+    else if (ft_strcmp(info->cmd.cmd, "echo") == 0)
+        ft_echo(info);
+    else if (ft_strcmp(info->cmd.cmd, "cd") == 0)
+        ft_cd(info);
+    else if (ft_strcmp(info->cmd.cmd, "export") == 0)
+        ft_export(info);
+    else if (ft_strcmp(info->cmd.cmd, "unset") == 0)
     {
-        if (ft_strcmp(info->cmd.cmd, "pwd") == 0)
-            ft_pwd(info);
-        else if (ft_strcmp(info->cmd.cmd, "echo") == 0)
-            ft_echo(info);
-        else if (ft_strcmp(info->cmd.cmd, "cd") == 0)
-            ft_cd(info);
-        else if (ft_strcmp(info->cmd.cmd, "export") == 0)
-            ft_export(info);
-        else if (ft_strcmp(info->cmd.cmd, "unset") == 0)
-        {
-            unsetenv(info->cmd.args[1]);
-            //ft_unset(info);
-        }
-        else {
-            ft_builtin(0, info);
-        }
+        unsetenv(info->cmd.args[1]);
+        //ft_unset(info);
     }
-    waitpid(pid, &status, 0);
+    else {
+        pid = fork();    
+        if (pid == 0)
+            ft_builtin(0, info);
+        waitpid(pid, &status, 0);
+    }
     ft_free_tabs(info->cmd.args);
 }

@@ -6,5 +6,4 @@ void    ft_export(t_info *info)
 
     values = ft_split(info->cmd.args[1], '=');
     setenv(values[0], values[1], 1);
-    exit(0);
 }

@@ -56,9 +56,8 @@ char	*ft_itoa(int nb)
 
 int     main(void)
 {
-    readline("\033[38;5;14m/Users/fredericbecerril/projet/Louis/miniShell/test \033[38;5;197m➜\033[38;5;14m minishell \033[38;5;11;01m∆ \033[0m");
+    //readline("\033[38;5;14m/Users/fredericbecerril/projet/Louis/miniShell/test \033[38;5;197m➜\033[38;5;14m minishell \033[38;5;11;01m∆ \033[0m");
     
-
     //printf("%s\n", "\033[38;2;0;0;200m TEST\033[0m LUL");
     return (0);
 

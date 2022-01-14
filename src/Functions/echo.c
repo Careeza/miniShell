@@ -24,5 +24,4 @@ void    ft_echo(t_info *info)
 	}
 	if (print_n)
 		printf("\n");
-	exit(0);
 }

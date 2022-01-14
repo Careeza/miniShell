@@ -7,14 +7,25 @@
 
 //ft_getpwd();
 //getenv("PWD");
+
+char    *ft_get_pos()
+{
+    char    *pwd;
+    int     i;
+
+    pwd = ft_getpwd();
+    i = ft_strlen(pwd) - 1;
+    while (i >= 0 && pwd[i] != '/')
+        i--;
+    if (i == 0)
+        return (pwd);
+    else
+        return (pwd + i + 1);
+}
+
 char	*ft_get_exec_name()
 {
-    char	*exec_name;
-
-    exec_name = ft_strjoin(ft_getpwd(), " \033[32m➜ \033[96;01mminishell ");
-    exec_name = ft_strjoin("\033[21m", exec_name);
-    exec_name = ft_strjoin(exec_name, "\033[0m");
-    return (exec_name);
+    return (ft_strjoin3("(minishell) \033[38;5;46m➜ \033[38;5;14m", ft_get_pos(), " \033[38;5;11m∆ \033[0m"));
 }
 
 int     main(int argc, char **argv, char **env) 
