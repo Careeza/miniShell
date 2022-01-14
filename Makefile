@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Iinclude -g -fsanitize=address
 LDFLAGS = -lreadline
 
 BUILD_DIR = build

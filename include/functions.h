@@ -11,5 +11,6 @@ void    ft_exit(t_info *info);
 void    ft_export(t_info *info);
 void    ft_pwd(t_info *info);
 void    ft_unset(t_info *info);
+void	ft_builtin(int absolute_path, t_info *info);
 
 #endif

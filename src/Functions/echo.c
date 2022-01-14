@@ -2,28 +2,27 @@
 
 void    ft_echo(t_info *info)
 {
-    int		i;
-	int		count_1;
-	int		count_2;
+	int 	i;
+	int		print_n;
+	char	**args;
 
-	i = 0;
-	count_1 = 0;
-	count_2 = 0;
-	info->line_read += 5;
-	while (info->line_read[i])
+
+	print_n = 1;
+	args = info->cmd.args;
+	i = 1;
+	if (args[1] && ft_strcmp(args[1], "-n") == 0)
 	{
-		if (info->line_read[i] == '"')
-			count_1++;
-		else if (info->line_read[i] == '\'')
-			count_2++;
+		i = 2;
+		print_n = 0;
+	}
+	while (args[i])
+	{
+		printf("%s", args[i]);
 		i++;
+		if (args[i])
+			printf(" ");
 	}
-	i = 0;
-	if (count_1 % 2 == 0 && count_2 % 2 == 0)
-	{
-		remove_chars(info->line_read, '"', '\'');
-		ft_putstr(info->line_read);
-	}
-	//else impair
-    ft_putchar('\n');
+	if (print_n)
+		printf("\n");
+	exit(0);
 }

@@ -14,6 +14,11 @@
 # define CSI_RED CSI     "31m"
 # define CSI_RESET CSI   "0m"
 
+int		ft_is_alpha_num(char c);
+int		ft_is_num(char c);
+int		ft_is_alpha(char c);
+char	*ft_strdup(const char *s1);
+char	*ft_strndup(const char *s1, int n);
 void    ft_print_errno(char *msg_before, char *msg_after);
 void	ft_free_tabs(char **tab);
 void	ft_strcpy(char *src, char *dest);
@@ -31,5 +36,7 @@ int		ft_strlen(const char *str);
 void	ft_putstr(char *str);
 void	ft_putchar(char c);
 int     ft_strpos(char *s, char *tocheck);
+char    *ft_replace(char *str, char *to_replace, char *replace_by, int *index);
+char    *ft_itoa(int nb);
 
 #endif

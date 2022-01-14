@@ -6,6 +6,11 @@
         "common.h": "c",
         "stdlib.h": "c",
         "limits.h": "c",
-        "__locale": "c"
+        "__locale": "c",
+        "minishell.h": "c",
+        "stdio.h": "c",
+        "sstream": "c",
+        "chrono": "c",
+        "complex": "c"
     }
 }
