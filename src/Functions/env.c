@@ -2,5 +2,12 @@
 
 void    ft_env(t_info *info)
 {
-    (void)info;
+    int     i;
+
+    i = 0;
+    while (info->env && info->env[i])
+    {
+        printf("%s\n", info->env[i]);
+        i++;
+    }
 }

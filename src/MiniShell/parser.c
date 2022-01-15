@@ -200,10 +200,9 @@ void    ft_parser(t_info *info)
     else if (ft_strcmp(info->cmd.cmd, "export") == 0)
         ft_export(info);
     else if (ft_strcmp(info->cmd.cmd, "unset") == 0)
-    {
-        unsetenv(info->cmd.args[1]);
-        //ft_unset(info);
-    }
+        ft_unset(info);
+    else if (ft_strcmp(info->cmd.cmd, "env") == 0)
+        ft_env(info);
     else {
         pid = fork();    
         if (pid == 0)

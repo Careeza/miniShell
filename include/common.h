@@ -38,5 +38,9 @@ void	ft_putchar(char c);
 int     ft_strpos(char *s, char *tocheck);
 char    *ft_replace(char *str, char *to_replace, char *replace_by, int *index);
 char    *ft_itoa(int nb);
+char    **ft_join_tab_str(char **tab, char *str);
+char    **ft_copy_tabs(char **tab);
+int     ft_contain_env_name(char **env, char *str);
+char    **ft_delete_elem_tab(char **tab, int index);
 
 #endif

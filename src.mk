@@ -1,6 +1,10 @@
+SRC += src/Common/ft_contain_env_name.c
+SRC += src/Common/ft_copy_tabs.c
+SRC += src/Common/ft_delete_elem_tab.c
 SRC += src/Common/ft_free_tab.c
 SRC += src/Common/ft_is_alphanum.c
 SRC += src/Common/ft_itoa.c
+SRC += src/Common/ft_join_tab_str.c
 SRC += src/Common/ft_print_errno.c
 SRC += src/Common/ft_putchar.c
 SRC += src/Common/ft_putstr.c

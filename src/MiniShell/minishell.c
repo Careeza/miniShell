@@ -35,7 +35,7 @@ int     main(int argc, char **argv, char **env)
 
     (void)argv;
     (void)argc;
-    info.env = env;
+    info.env = ft_copy_tabs(env);
     while (1)
     {
         exec_name = ft_get_exec_name();
