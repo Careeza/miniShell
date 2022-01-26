@@ -23,6 +23,7 @@ OBJS = $(patsubst src/%.c, $(OBJS_DIR)/%.o, $(SRC))
 OBJS_FUNCTIONS = $(filter $(OBJS_DIR)/Functions/%, $(OBJS))
 OBJS_COMMON = $(filter $(OBJS_DIR)/Common/%, $(OBJS))
 OBJS_MINISHELL = $(filter $(OBJS_DIR)/MiniShell/%, $(OBJS))
+OBJS_PARSER = $(filter $(OBJS_DIR)/Parser/%, $(OBJS))
 
 all: minishell
 
@@ -31,7 +32,7 @@ $(OBJS_DIR)/%.o: src/%.c Makefile
 	$(CC) $(CFLAGS) -c -o $@ $<
 	@$(POSTCOMPILE)
 
-minishell: $(OBJS_FUNCTIONS) $(OBJS_COMMON) $(OBJS_MINISHELL)
+minishell: $(OBJS_FUNCTIONS) $(OBJS_COMMON) $(OBJS_MINISHELL) $(OBJS_PARSER)
 
 minishell:
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
@@ -41,7 +42,6 @@ clean:
 
 fclean: clean
 	rm -rf minishell
-	rm -rf minishell2
 
 re:
 	$(MAKE) fclean

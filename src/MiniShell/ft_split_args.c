@@ -33,7 +33,6 @@ static	int	nbstring(char const *s)
 		return (0);
 	while (s[i])
 	{
-		//           '          dasd as "          asdasd "      '
 		if (!is_in_double_quote && s[i] == '\'')
 			is_in_quote = !is_in_quote;
 		if (!is_in_quote && s[i] == '"')
@@ -119,7 +118,7 @@ static	char	**fill(char const *s, char **str, int nbstring)
 	return (str);
 }
 
-char	**ft_split_args(char const *s)
+char	**ft_split_args(char const *s, int *status)
 {
 	int		i;
 	char	**str;
@@ -128,12 +127,12 @@ char	**ft_split_args(char const *s)
 		return (NULL);
 	i = nbstring(s);
 	if (i == -1)
-	{
-		write(2, "syntax error with open quotes\n", 30);
-		return (NULL);
-	}
+		return (ft_return_error(status, UNCLOSE_QUOTE));
 	str = malloc(sizeof(char *) * (i + 1));
 	if (str == NULL)
-		return (NULL);
-	return (fill(s, str, i));
+		return (ft_return_error(status, MALLOC_FAIL));
+	str = fill(s, str, i);
+	if (!str)
+		return (ft_return_error(status, MALLOC_FAIL));
+	return (str);
 }

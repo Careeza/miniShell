@@ -10,4 +10,5 @@ void    ft_env(t_info *info)
         printf("%s\n", info->env[i]);
         i++;
     }
+    info->exit_value = 0;
 }

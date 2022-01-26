@@ -15,9 +15,13 @@ char    **ft_join_tab_str(char **tab, char *str)
     while (i < len1)
     {
         res[i] = ft_strdup(tab[i]);
+        if (!res[i])
+            return (NULL);
         i++;
     }
     res[len1] = ft_strdup(str);
+    if (!res[len1])
+        return (NULL);
     res[len1 + 1] = NULL;
     return (res);
 }

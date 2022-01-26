@@ -42,5 +42,6 @@ char    **ft_join_tab_str(char **tab, char *str);
 char    **ft_copy_tabs(char **tab);
 int     ft_contain_env_name(char **env, char *str);
 char    **ft_delete_elem_tab(char **tab, int index);
+void    *ft_return_error(int *status, int status_value);
 
 #endif

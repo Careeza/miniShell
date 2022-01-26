@@ -14,6 +14,8 @@ char    **ft_copy_tabs(char **tab)
 	while (i < len)
 	{
 		res[i] = ft_strdup(tab[i]);
+		if (!res[i])
+			return (NULL);
 		i++;
 	}
 	res[i] = NULL;

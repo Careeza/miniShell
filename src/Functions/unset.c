@@ -8,7 +8,10 @@ void    ft_unset(t_info *info)
     int     j;
 
     if (ft_tablen(info->cmd.args) == 1)
-        ;//TODO Error
+    {
+        ft_error_message(info, "unset: not enough arguments\n", 0);
+        return ;
+    }
     i = 1;
     while (info->cmd.args[i])
     {
@@ -18,7 +21,10 @@ void    ft_unset(t_info *info)
             tmp = info->env;
             info->env = ft_delete_elem_tab(info->env, j);
             free(tmp);
+            if (!info->env)
+                ft_error_message(info, "Malloc failed\n", 1);
         }
         i++;
     }
+    info->exit_value = 0;
 }
